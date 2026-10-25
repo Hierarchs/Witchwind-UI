@@ -74,3 +74,4 @@ Under **Configure Settings > Witchwind UI**:
 
 - The fonts (Cinzel, Alegreya, Alegreya Sans) are the same files Witchwind Inventory bundles, so the look doesn't depend on an internet connection.
 - Other windows (sheets, journal pages, other modules' apps) keep their own look. Witchwind Inventory restyles the dnd5e sheets.
+- With Nik's DnD5e Tweaks' chat card styling on, its roll-type colors (the attack, damage and save badges, the ATK and DMG labels and the colored action buttons) follow the chat card style rather than Foundry's interface theme: its light colors on parchment, drawn as tints so they sit on the paper, and its dark colors on steel.

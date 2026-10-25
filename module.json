@@ -2,7 +2,7 @@
   "id": "witchwind-ui",
   "title": "Witchwind UI",
   "description": "The rest of Foundry's interface in the style of Witchwind Inventory: dark leather and gold, Cinzel headings, square slots and parchment or steel chat cards, across the chat, sidebar tabs, tooltips, menus, dialogs and the controls around the screen.",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "authors": [
     { "name": "Hierarchs", "url": "https://github.com/Hierarchs" }
   ],
