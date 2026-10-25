@@ -1,9 +1,9 @@
-# Packages the module into dist/vellumgate.zip, with module.json at the zip root as Foundry expects.
+# Packages the module into dist/witchwind-ui.zip, with module.json at the zip root as Foundry expects.
 # Run from anywhere: powershell -ExecutionPolicy Bypass -File build.ps1
 
 $root = $PSScriptRoot
-$stage = Join-Path $env:TEMP "vellumgate-build"
-$zip = Join-Path $root "dist\vellumgate.zip"
+$stage = Join-Path $env:TEMP "witchwind-ui-build"
+$zip = Join-Path $root "dist\witchwind-ui.zip"
 $include = "module.json", "README.md", "LICENSE", "scripts", "styles", "lang", "fonts"
 
 if (Test-Path $stage) { Remove-Item -Recurse -Force $stage }

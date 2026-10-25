@@ -1,4 +1,4 @@
-# Vellumgate
+# Witchwind UI
 
 Foundry's chat, chat cards and the icons along the sides of the screen, restyled after The Elder Scrolls IV: Oblivion. It pairs with [Witchwind Inventory](https://github.com/Hierarchs/Witchwind-Inventory-System-VTT), which restyles the character sheets.
 
@@ -25,7 +25,7 @@ Install it from this manifest URL (Foundry's **Install Module** dialog, or your 
 https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/module.json
 ```
 
-Then enable **Vellumgate** in your world's module settings.
+Then enable **Witchwind UI** in your world's module settings.
 
 ## License
 
@@ -34,12 +34,12 @@ The module's code is under the [MIT License](LICENSE). The bundled fonts are und
 ## Releasing a new version
 
 1. Bump `version` in `module.json`.
-2. Run `build.ps1` to rebuild `dist/vellumgate.zip`.
+2. Run `build.ps1` to rebuild `dist/witchwind-ui.zip`.
 3. Commit and push. Foundry will offer the update the next time it checks.
 
 ## Settings
 
-Under **Configure Settings > Vellumgate**:
+Under **Configure Settings > Witchwind UI**:
 
 | Setting | What it does |
 |---|---|

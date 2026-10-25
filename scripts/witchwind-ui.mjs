@@ -1,4 +1,4 @@
-const MODULE_ID = "vellumgate";
+const MODULE_ID = "witchwind-ui";
 
 /* -------------------------------------------- */
 /*  Settings                                    */
@@ -15,13 +15,13 @@ Hooks.once("init", () => {
   });
 
   register("chat", {
-    name: "VELLUMGATE.Settings.Chat.Name",
-    hint: "VELLUMGATE.Settings.Chat.Hint"
+    name: "WITCHWIND_UI.Settings.Chat.Name",
+    hint: "WITCHWIND_UI.Settings.Chat.Hint"
   });
 
   register("controls", {
-    name: "VELLUMGATE.Settings.Controls.Name",
-    hint: "VELLUMGATE.Settings.Controls.Hint"
+    name: "WITCHWIND_UI.Settings.Controls.Name",
+    hint: "WITCHWIND_UI.Settings.Controls.Hint"
   });
 
   // Applied during init, before the interface first renders, so it never flashes the default style.
@@ -34,6 +34,6 @@ Hooks.once("init", () => {
 
 /** Everything in the stylesheet is scoped under these body classes, so switching a setting off restores the default at once. */
 function applyStyles() {
-  document.body.classList.toggle("vg-chat", game.settings.get(MODULE_ID, "chat"));
-  document.body.classList.toggle("vg-controls", game.settings.get(MODULE_ID, "controls"));
+  document.body.classList.toggle("wwui-chat", game.settings.get(MODULE_ID, "chat"));
+  document.body.classList.toggle("wwui-controls", game.settings.get(MODULE_ID, "controls"));
 }

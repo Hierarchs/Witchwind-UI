@@ -1,0 +1,858 @@
+/* -------------------------------------------- */
+/*  Fonts (bundled, Latin; SIL Open Font License, see fonts/OFL-*.txt) */
+/* -------------------------------------------- */
+
+@font-face {
+  font-family: "Almendra";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/almendra-400-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Almendra";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/almendra-700-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Almendra";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/almendra-italic-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IM Fell English";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/imfell-english-400-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "IM Fell English";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/imfell-english-italic-latin.woff2") format("woff2");
+}
+
+/* ============================================ */
+/*  Witchwind UI                                */
+/* ============================================ */
+
+:root {
+  /* Parchment */
+  --wwui-parch: #d8c49b;
+  --wwui-parch-light: #eadbb8;
+  --wwui-parch-deep: #c4a978;
+  --wwui-wash: rgb(110 74 34 / 10%);
+  --wwui-rule: rgb(90 60 28 / 38%);
+  --wwui-rule-soft: rgb(90 60 28 / 22%);
+
+  /* Ink */
+  --wwui-ink: #3b2814;
+  --wwui-ink-soft: #5b4124;
+  --wwui-ink-faint: #6e5234;
+  --wwui-ink-head: #561d0d;
+  --wwui-ink-glow: rgb(214 140 50 / 55%);
+
+  /* Bronze frames */
+  --wwui-bronze: #6b5230;
+  --wwui-bronze-light: #a8874e;
+  --wwui-bronze-bright: #d2ae66;
+  --wwui-bronze-dark: #2a1d10;
+  --wwui-glow: rgb(243 200 110 / 60%);
+
+  /* Outcomes and message kinds, as ink colors that read on parchment */
+  --wwui-good: #2d5a1b;
+  --wwui-bad: #8a1d10;
+  --wwui-whisper: #4a3f8c;
+  --wwui-blind: #7a2c78;
+  --wwui-emote: #93630f;
+
+  /* Large brown blotches with a fine grain on top, laid over the parchment color. */
+  --wwui-mottle: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.018' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .28 0 0 0 0 .12 .9 0 0 0 -.38'/%3E%3C/filter%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .2 0 0 0 0 .1 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+
+  /* A page: darker toward its edges, as if the edges had been near a candle. */
+  --wwui-parchment:
+    radial-gradient(ellipse at 50% 42%, transparent 52%, rgb(126 82 36 / 26%) 84%, rgb(84 50 18 / 42%) 100%),
+    var(--wwui-mottle),
+    var(--wwui-parch);
+
+  /* Bronze corner brackets, one per corner, drawn just inside a frame. */
+  --wwui-corner-tl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cg fill='none' stroke='%237a5a2e' stroke-width='1.3'%3E%3Cpath d='M1.5 10V4.5Q1.5 1.5 4.5 1.5H10'/%3E%3Cpath d='M4.5 7.5V6Q4.5 4.5 6 4.5H7.5'/%3E%3C/g%3E%3Cg fill='%237a5a2e'%3E%3Ccircle cx='10.6' cy='1.5' r='1.1'/%3E%3Ccircle cx='1.5' cy='10.6' r='1.1'/%3E%3C/g%3E%3C/svg%3E");
+  --wwui-corner-tr: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cg transform='translate(14 0) scale(-1 1)'%3E%3Cg fill='none' stroke='%237a5a2e' stroke-width='1.3'%3E%3Cpath d='M1.5 10V4.5Q1.5 1.5 4.5 1.5H10'/%3E%3Cpath d='M4.5 7.5V6Q4.5 4.5 6 4.5H7.5'/%3E%3C/g%3E%3Cg fill='%237a5a2e'%3E%3Ccircle cx='10.6' cy='1.5' r='1.1'/%3E%3Ccircle cx='1.5' cy='10.6' r='1.1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  --wwui-corner-bl: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cg transform='translate(0 14) scale(1 -1)'%3E%3Cg fill='none' stroke='%237a5a2e' stroke-width='1.3'%3E%3Cpath d='M1.5 10V4.5Q1.5 1.5 4.5 1.5H10'/%3E%3Cpath d='M4.5 7.5V6Q4.5 4.5 6 4.5H7.5'/%3E%3C/g%3E%3Cg fill='%237a5a2e'%3E%3Ccircle cx='10.6' cy='1.5' r='1.1'/%3E%3Ccircle cx='1.5' cy='10.6' r='1.1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  --wwui-corner-br: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cg transform='translate(14 14) scale(-1 -1)'%3E%3Cg fill='none' stroke='%237a5a2e' stroke-width='1.3'%3E%3Cpath d='M1.5 10V4.5Q1.5 1.5 4.5 1.5H10'/%3E%3Cpath d='M4.5 7.5V6Q4.5 4.5 6 4.5H7.5'/%3E%3C/g%3E%3Cg fill='%237a5a2e'%3E%3Ccircle cx='10.6' cy='1.5' r='1.1'/%3E%3Ccircle cx='1.5' cy='10.6' r='1.1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  --wwui-corners:
+    var(--wwui-corner-tl) left 2px top 2px / 14px no-repeat,
+    var(--wwui-corner-tr) right 2px top 2px / 14px no-repeat,
+    var(--wwui-corner-bl) left 2px bottom 2px / 14px no-repeat,
+    var(--wwui-corner-br) right 2px bottom 2px / 14px no-repeat;
+
+  /* The bronze frame: a dark outer line, a bronze band (the border itself), a bright inner line, then the burnt edge. */
+  --wwui-frame-shadow:
+    0 0 0 1px var(--wwui-bronze-dark),
+    inset 0 0 0 1px rgb(222 196 140 / 70%),
+    inset 0 0 0 2px rgb(60 38 16 / 45%),
+    inset 0 0 22px rgb(110 70 28 / 36%),
+    0 3px 8px rgb(0 0 0 / 50%);
+
+  /* A raised parchment plaque, for buttons inside cards. */
+  --wwui-plaque: linear-gradient(180deg, #efe3c3, #d3bb8d);
+  --wwui-plaque-hover: linear-gradient(180deg, #f7edd2, #dfc89a);
+  --wwui-plaque-pressed: linear-gradient(180deg, #bf9f6a, #d2b886);
+
+  --wwui-font-display: "Almendra", "Modesto Condensed", Georgia, serif;
+  --wwui-font-body: "IM Fell English", "Alegreya", Georgia, serif;
+}
+
+/* -------------------------------------------- */
+/*  Chat log                                    */
+/* -------------------------------------------- */
+
+/* A little more room between messages, so each bronze frame stands clear of the next. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications) {
+  --chat-message-spacing: 6px;
+}
+
+.wwui-chat :is(#chat, #chat-popout) .chat-scroll {
+  scrollbar-color: var(--wwui-bronze) transparent;
+}
+
+/* -------------------------------------------- */
+/*  Messages: one parchment page each           */
+/* -------------------------------------------- */
+
+/*
+ * Core, dnd5e's standard messages and dnd5e's compact cards each give the message its own background,
+ * border and text colors. The id inside :is() lifts these rules above dnd5e's (which also reach for an id),
+ * so every kind of message comes out the same page without !important.
+ *
+ * The colors are also handed to the variables core and dnd5e build their parts from, on the message and on
+ * the nested elements where dnd5e declares its theme again (the damage and effect trays are their own .dnd5e2).
+ */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message,
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.dnd5e2, .themed) {
+  /* Text */
+  --color-text-primary: var(--wwui-ink);
+  --color-text-secondary: var(--wwui-ink-soft);
+  --color-text-tertiary: var(--wwui-ink-faint);
+  --color-text-emphatic: var(--wwui-ink-head);
+  --color-shadow-primary: var(--wwui-ink-glow);
+  --color-shadow-highlight: var(--wwui-ink-glow);
+  --placeholder-color: var(--wwui-ink-faint);
+
+  /* dnd5e's palette */
+  --dnd5e-color-gold: var(--wwui-bronze);
+  --dnd5e-color-black: var(--wwui-ink);
+  --dnd5e-color-blue-gray-3: var(--wwui-rule);
+  --dnd5e-border-gold: 1px solid var(--wwui-rule);
+  --dnd5e-border-dotted: 1px dotted var(--wwui-rule);
+  --dnd5e-background-alt-1: var(--wwui-parch-deep);
+  --dnd5e-background-alt-2: var(--wwui-parch-deep);
+  --dnd5e-background-parchment: var(--wwui-parch-light);
+  --dnd5e-shadow-45: rgb(40 24 8 / 45%);
+  --dnd5e-chat-background: var(--wwui-parchment);
+  --dnd5e-chat-description-background: var(--wwui-wash);
+  --dnd5e-chat-button-background: var(--wwui-parch-light);
+  --dnd5e-chat-button-border: var(--wwui-bronze);
+  --dnd5e-chat-color-die: var(--wwui-bronze-dark);
+  --dnd5e-chat-breakdown-border: 1px solid var(--wwui-bronze);
+  --dnd5e-chat-status-success: var(--wwui-good);
+  --dnd5e-chat-status-failure: var(--wwui-bad);
+  --color-level-success: var(--wwui-good);
+  --color-level-success-border: var(--wwui-good);
+  --color-level-error: var(--wwui-bad);
+  --color-level-error-border: var(--wwui-bad);
+  --activity-icon-color: var(--wwui-bronze);
+
+  /* Pills and links */
+  --pill-border: 1px solid var(--wwui-rule);
+  --pill-transparent-color: var(--wwui-ink-soft);
+  --pill-background-color: rgb(255 248 228 / 35%);
+  --content-link-background: rgb(255 248 228 / 45%);
+  --content-link-border-color: var(--wwui-rule);
+  --content-link-text-color: var(--wwui-ink-head);
+  --content-link-icon-color: var(--wwui-bronze);
+
+  /* Buttons */
+  --button-background-color: var(--wwui-parch-light);
+  --button-border-color: var(--wwui-bronze);
+  --button-text-color: var(--wwui-ink-head);
+  --button-hover-background-color: var(--wwui-parch-light);
+  --button-hover-border-color: var(--wwui-bronze-light);
+  --button-hover-text-color: var(--wwui-ink-head);
+  --button-focus-outline-color: var(--wwui-bronze-light);
+
+  /* Type */
+  --dnd5e-font-roboto: var(--wwui-font-body);
+  --dnd5e-font-roboto-condensed: var(--wwui-font-body);
+  --dnd5e-font-roboto-slab: var(--wwui-font-display);
+  --font-sans: var(--wwui-font-body);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message {
+  background: var(--wwui-corners), var(--wwui-parchment);
+  border: 2px solid var(--wwui-bronze);
+  border-radius: 4px;
+  box-shadow: var(--wwui-frame-shadow);
+  color: var(--wwui-ink);
+  font-family: var(--wwui-font-body);
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+/* Whispers, blind rolls and emotes: a faint tint and a colored lower edge, so they still stand out. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message.whisper {
+  background: var(--wwui-corners), linear-gradient(rgb(74 63 140 / 9%), rgb(74 63 140 / 9%)), var(--wwui-parchment);
+  border-bottom: 3px solid var(--wwui-whisper);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message.blind {
+  background: var(--wwui-corners), linear-gradient(rgb(122 44 120 / 9%), rgb(122 44 120 / 9%)), var(--wwui-parchment);
+  border-bottom: 3px solid var(--wwui-blind);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message.emote {
+  background: var(--wwui-corners), linear-gradient(rgb(147 99 15 / 8%), rgb(147 99 15 / 8%)), var(--wwui-parchment);
+  border-bottom: 3px solid var(--wwui-emote);
+}
+
+/* A message being deleted collapses; don't leave its frame behind while it does. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message.deleting {
+  box-shadow: none;
+}
+
+/* -------------------------------------------- */
+/*  Message header                              */
+/* -------------------------------------------- */
+
+/* The speaker and time, over a bronze rule that fades out at both ends. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header {
+  color: var(--wwui-ink-soft);
+  padding-bottom: 4px;
+  margin-bottom: 6px;
+  background: linear-gradient(90deg, transparent, var(--wwui-rule) 12%, var(--wwui-rule) 88%, transparent) bottom / 100% 1px no-repeat;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-sender {
+  font-family: var(--wwui-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  font-variant: normal;
+  color: var(--wwui-ink-head);
+  line-height: 1.2;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-sender:hover {
+  text-shadow: 0 0 6px var(--wwui-ink-glow);
+}
+
+/* dnd5e's standard header: a portrait beside the name and who it's from or to. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-sender .name-stacked .title {
+  font-family: var(--wwui-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-sender .name-stacked .subtitle {
+  font-family: var(--wwui-font-body);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--wwui-ink-soft);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-sender .avatar :is(img, video) {
+  border: 1px solid var(--wwui-bronze-light);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), 0 2px 4px rgb(0 0 0 / 40%);
+  background: var(--wwui-parch-deep);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-sender .avatar.token :is(img, video) {
+  border: none;
+  box-shadow: none;
+  background: none;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-metadata {
+  font-family: var(--wwui-font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--wwui-ink-faint);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-metadata :is(a, button) {
+  color: var(--wwui-ink-faint);
+  font-style: normal;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header .message-metadata :is(a, button):hover {
+  color: var(--wwui-ink-head);
+  text-shadow: 0 0 6px var(--wwui-ink-glow);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-header :is(.whisper-to, .flavor-text) {
+  font-family: var(--wwui-font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--wwui-ink-soft);
+}
+
+/* -------------------------------------------- */
+/*  Message text                                */
+/* -------------------------------------------- */
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content {
+  color: var(--wwui-ink);
+  font-family: var(--wwui-font-body);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content :is(h1, h2, h3, h4, h5) {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+  border-bottom-color: var(--wwui-rule);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content :is(strong, b) {
+  color: var(--wwui-ink-head);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--wwui-rule) 15%, var(--wwui-rule) 85%, transparent);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content :is(.content-link, .inline-roll) {
+  font-family: var(--wwui-font-body);
+  color: var(--wwui-ink-head);
+  background: rgb(255 248 228 / 45%);
+  border: 1px solid var(--wwui-rule);
+  border-radius: 2px;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content :is(.content-link, .inline-roll) i {
+  color: var(--wwui-bronze);
+}
+
+/* Core's roll table draws and card deals. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .table-draw :is(.table-description, ul.table-results li) {
+  border-color: var(--wwui-rule);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.table-draw ul.table-results li > img, .cards-notification > .icon) {
+  border: 1px solid var(--wwui-bronze);
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark);
+}
+
+/* -------------------------------------------- */
+/*  Dice: core rolls (/roll, macros, any system) */
+/* -------------------------------------------- */
+
+/* The formula on an engraved strip, the total large in Almendra on a raised plate below it. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll .dice-flavor {
+  font-style: italic;
+  color: var(--wwui-ink-soft);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll :is(.dice-formula, .dice-total) {
+  background: var(--wwui-wash);
+  border: 1px solid var(--wwui-rule);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgb(60 38 15 / 30%), 0 1px 0 rgb(255 248 228 / 45%);
+  color: var(--wwui-ink);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll .dice-formula {
+  font-family: var(--wwui-font-body);
+  font-size: 13px;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll .dice-total {
+  font-family: var(--wwui-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 34px;
+  color: var(--wwui-ink-head);
+  background: linear-gradient(180deg, rgb(90 60 28 / 16%), rgb(90 60 28 / 6%));
+  border-color: rgb(74 52 26 / 50%);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll .dice-total:is(.success:not(.fumble), .critical) {
+  color: var(--wwui-good);
+  border-color: var(--wwui-good);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll .dice-total:is(.failure:not(.critical), .fumble) {
+  color: var(--wwui-bad);
+  border-color: var(--wwui-bad);
+}
+
+/* The dice under each roll, shown when it's clicked. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-tooltip :is(.tooltip-part, .part-header) {
+  border-color: var(--wwui-rule);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-tooltip .part-header .part-total {
+  background: var(--wwui-wash);
+  border-color: var(--wwui-rule);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-tooltip .part-header :is(.part-formula, .part-total) {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+}
+
+/* dnd5e wraps each total in its own box with a rule running off either side; those go bronze. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll :is(.result, .dice-total) > .total {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+  border-color: var(--wwui-bronze);
+}
+
+/* -------------------------------------------- */
+/*  dnd5e cards: header                         */
+/* -------------------------------------------- */
+
+/* The item's picture in a small bronze frame, its name in Almendra, the details beneath in italic. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header :is(.item-icon, .activity-icon) :is(img, dnd5e-icon) {
+  border: 1px solid var(--wwui-bronze-light);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), 0 1px 3px rgb(40 24 8 / 40%);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .activity-icon dnd5e-icon {
+  --icon-fill: var(--wwui-ink-head);
+  background: var(--wwui-plaque);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .activity-icon:has(> dnd5e-icon) {
+  border: none;
+  padding: 0;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .item-icon:hover {
+  box-shadow: 0 0 8px var(--wwui-glow);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .name-stacked .title {
+  font-family: var(--wwui-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .name-stacked .subtitle {
+  font-family: var(--wwui-font-body);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--wwui-ink-soft);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .chevron {
+  color: var(--wwui-ink-faint);
+}
+
+/* The old-style card header (deprecated in dnd5e 6.0, still used by some modules). */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .chat-card .card-header .summary .title {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+/* -------------------------------------------- */
+/*  dnd5e cards: body                           */
+/* -------------------------------------------- */
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.card-flavor, .flavor-text) {
+  font-family: var(--wwui-font-body);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--wwui-ink-soft);
+}
+
+/* The description reads like a page from a book: justified, between two fine rules, on a slightly deeper wash. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-description,
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .chat-card .card-header .details {
+  background: var(--wwui-wash);
+  border-block: 1px solid var(--wwui-rule-soft);
+  font-family: var(--wwui-font-body);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--wwui-ink);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-description.collapsed {
+  border-block-color: transparent;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message p.supplement {
+  font-family: var(--wwui-font-body);
+  font-size: 13px;
+  color: var(--wwui-ink-soft);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message p.supplement > strong {
+  font-family: var(--wwui-font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--wwui-ink-head);
+}
+
+/* Rows: a bronze ink glyph on the left (tag, target, dice, action), the entries to its right. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .icon-row > i {
+  color: var(--wwui-bronze);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.pills, .card-footer) .pill {
+  background: rgb(255 248 228 / 35%);
+  border: 1px solid var(--wwui-rule);
+  border-radius: 2px;
+  color: var(--wwui-ink-soft);
+  font-family: var(--wwui-font-body);
+  font-size: 12px;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .pill.critical {
+  border-color: var(--wwui-good);
+  color: var(--wwui-good);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .target.none {
+  border-color: var(--wwui-bad);
+  color: var(--wwui-bad);
+}
+
+/* Targets: hit in green ink, miss in red; the AC sits on a small dark tab. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message target-pill[data-hit] {
+  border-color: var(--wwui-good);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message target-pill[data-miss] {
+  border-color: var(--wwui-bad);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message target-pill > label {
+  font-family: var(--wwui-font-body);
+  color: var(--wwui-ink);
+}
+
+/* -------------------------------------------- */
+/*  dnd5e cards: buttons                        */
+/* -------------------------------------------- */
+
+/* Raised parchment plaques in a bronze edge; they warm and glow under the cursor. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.card-buttons button, .icon-row button.icon:not(.target-source-toggle), .apply-button, .multiplier-button) {
+  background: var(--wwui-plaque);
+  border: 1px solid var(--wwui-bronze);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgb(255 250 235 / 65%), inset 0 -1px 0 rgb(90 60 28 / 25%), 0 1px 2px rgb(40 24 8 / 35%);
+  color: var(--wwui-ink-head);
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  font-variant: normal;
+  text-shadow: 0 1px 0 rgb(255 248 228 / 60%);
+  transition: box-shadow 150ms ease, border-color 150ms ease;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.card-buttons button, .icon-row button.icon:not(.target-source-toggle), .apply-button, .multiplier-button):is(:hover:not(:disabled), :focus-visible) {
+  background: var(--wwui-plaque-hover);
+  border-color: var(--wwui-bronze-light);
+  box-shadow: inset 0 1px 0 rgb(255 250 235 / 70%), 0 0 6px var(--wwui-glow), 0 1px 2px rgb(40 24 8 / 35%);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.card-buttons button, .icon-row button.icon:not(.target-source-toggle), .apply-button, .multiplier-button)[aria-pressed="true"] {
+  background: var(--wwui-plaque-pressed);
+  border-color: var(--wwui-bronze-dark);
+  box-shadow: inset 0 1px 3px rgb(60 38 15 / 55%);
+  text-shadow: none;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.card-buttons, .icon-row, .card-tray) button :is(i, dnd5e-icon) {
+  --icon-fill: currentcolor;
+  color: inherit;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .icon-row > button.target-source-toggle {
+  color: var(--wwui-bronze);
+}
+
+/* -------------------------------------------- */
+/*  dnd5e cards: rolls                          */
+/* -------------------------------------------- */
+
+/* Each roll sits in an engraved well: the total on a raised plate in the middle, the d20 as a dark ink die at the end. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll {
+  background: linear-gradient(180deg, rgb(90 60 28 / 16%), rgb(90 60 28 / 6%));
+  border: 1px solid rgb(74 52 26 / 50%);
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgb(60 38 15 / 35%), 0 1px 0 rgb(255 248 228 / 45%);
+  min-height: 34px;
+  color: var(--wwui-ink);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll:is(:hover:not(:disabled), :focus-visible) {
+  border-color: var(--wwui-bronze-light);
+  box-shadow: inset 0 1px 3px rgb(60 38 15 / 35%), 0 0 6px var(--wwui-glow);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(button.dice-roll .result, .dice-roll .dice-total) > .total {
+  min-inline-size: 34px;
+  padding: 0 8px;
+  background: var(--wwui-plaque);
+  border: 1px solid var(--wwui-bronze);
+  box-shadow: inset 0 1px 0 rgb(255 250 235 / 65%), 0 1px 2px rgb(40 24 8 / 35%);
+  font-size: 19px;
+  line-height: 24px;
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll :is(.result, .dice-total) > .total::before {
+  background: linear-gradient(to left, var(--wwui-bronze), transparent);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .dice-roll :is(.result, .dice-total) > .total::after {
+  background: linear-gradient(to right, var(--wwui-bronze), transparent);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll .d20die > i {
+  color: var(--wwui-bronze-dark);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll .d20die .roll {
+  color: var(--wwui-parch-light);
+  font-family: var(--wwui-font-display);
+  letter-spacing: 0;
+}
+
+/* Critical and success in green ink, fumble and failure in red, on the total and its die. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll:is(.critical, .success:not(.fumble)) .result > .total {
+  color: var(--wwui-good);
+  border-color: var(--wwui-good);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll:is(.fumble, .failure:not(.critical)) .result > .total {
+  color: var(--wwui-bad);
+  border-color: var(--wwui-bad);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll.critical .d20die > i { color: var(--wwui-good); }
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button.dice-roll.fumble .d20die > i { color: var(--wwui-bad); }
+
+/* The breakdown that opens under a roll: a loose sheet of parchment. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .message-content :is(.roll-breakdown, .inline-roll.expanded > .dice-tooltip) {
+  background: var(--wwui-parchment);
+  border: 1px solid var(--wwui-bronze);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 14px rgb(110 70 28 / 30%), 0 4px 12px rgb(0 0 0 / 50%);
+  color: var(--wwui-ink);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .roll-breakdown .dice .total :is(.label, .value) {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+}
+
+/* -------------------------------------------- */
+/*  dnd5e cards: trays, deltas, summaries       */
+/* -------------------------------------------- */
+
+/* "Apply" and "Effects" labels: small Almendra between two fine rules. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray > label {
+  font-family: var(--wwui-font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--wwui-ink-soft);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray > label::before,
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray > label::after {
+  border-block-start: 1px solid var(--wwui-rule);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray > label > i:first-of-type {
+  color: var(--wwui-bronze);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray .effects .effect > button > .title {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray .effects .effect > button > .pip {
+  border-color: var(--wwui-bronze);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-tray .effects .effect > button[aria-pressed="true"] > .pip {
+  background: var(--wwui-bronze);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.deltas, .card-summary, .chat-card .bastion) {
+  border-block-start: 1px solid var(--wwui-rule);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message :is(.deltas, .activities) > strong {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+}
+
+/* Rest and turn cards list what can be used: each a name in Almendra. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .chat-card ul.action-list .title {
+  font-family: var(--wwui-font-display);
+  font-variant: normal;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .chat-card :is(ul.action-list, .item-summary) .gold-icon,
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .chat-card .item-summary li {
+  border-color: var(--wwui-bronze);
+}
+
+/* -------------------------------------------- */
+/*  Message box                                 */
+/* -------------------------------------------- */
+
+/* Where you type: a parchment page in the same bronze frame, in IM Fell. */
+.wwui-chat #chat-message > .editor-container {
+  background: var(--wwui-corners), var(--wwui-parchment);
+  border: 2px solid var(--wwui-bronze);
+  border-radius: 4px;
+  box-shadow: var(--wwui-frame-shadow);
+  font-family: var(--wwui-font-body);
+  font-size: 15px;
+  --placeholder-color: var(--wwui-ink-faint);
+}
+
+.wwui-chat #chat-message > .editor-container:focus-within {
+  border-color: var(--wwui-bronze-light);
+  box-shadow: var(--wwui-frame-shadow), 0 0 10px var(--wwui-glow);
+}
+
+.wwui-chat #chat-message > .editor-container .editor-content {
+  color: var(--wwui-ink);
+  caret-color: var(--wwui-ink-head);
+  padding-inline: 8px;
+}
+
+.wwui-chat #chat-message > .editor-container:not(:focus-within):has(.editor-content > p:only-child > br:only-child)::after {
+  font-family: var(--wwui-font-body);
+  color: var(--wwui-ink-faint);
+}
+
+/* -------------------------------------------- */
+/*  Medallion buttons                           */
+/* -------------------------------------------- */
+
+/*
+ * The sidebar tabs, the scene controls, and the message-mode and log buttons beside the message box:
+ * each a round parchment medallion with an ink-drawn icon in a bronze rim. Under the cursor the rim
+ * brightens and the medallion glows; the open tab or chosen tool is lit from within, its icon in red-brown ink.
+ */
+.wwui-controls :is(#sidebar-tabs, #scene-controls) .ui-control,
+.wwui-chat :is(#chat-controls, .jump-to-bottom) .ui-control {
+  --control-bg-color: var(--wwui-parch);
+  --control-border-color: var(--wwui-bronze);
+  --control-icon-color: var(--wwui-ink);
+  --control-hover-bg-color: var(--wwui-parch-light);
+  --control-hover-border-color: var(--wwui-bronze-light);
+  --control-hover-icon-color: var(--wwui-ink-head);
+  --control-active-bg-color: var(--wwui-parch-light);
+  --control-active-border-color: var(--wwui-bronze-bright);
+  --control-active-icon-color: var(--wwui-ink-head);
+  /* Core lets button.icon widen these; a medallion stays round. */
+  flex: none;
+  width: var(--control-size);
+  height: var(--control-size);
+  background:
+    radial-gradient(circle at 50% 36%, rgb(255 246 222 / 85%) 0%, transparent 62%),
+    radial-gradient(circle at 50% 50%, transparent 58%, rgb(96 60 24 / 45%) 100%),
+    var(--wwui-mottle),
+    var(--wwui-parch);
+  border: 2px solid var(--wwui-bronze);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 1px var(--wwui-bronze-dark),
+    inset 0 0 0 1px rgb(232 208 150 / 65%),
+    inset 0 -2px 4px rgb(90 55 20 / 35%),
+    0 2px 5px rgb(0 0 0 / 60%);
+  color: var(--wwui-ink);
+  text-shadow: 0 1px 0 rgb(255 245 220 / 55%);
+  transition: border-color 150ms ease, box-shadow 150ms ease, color 150ms ease;
+}
+
+.wwui-controls :is(#sidebar-tabs, #scene-controls) .ui-control:hover:not(:disabled, .disabled),
+.wwui-chat :is(#chat-controls, .jump-to-bottom) .ui-control:hover:not(:disabled, .disabled) {
+  background:
+    radial-gradient(circle at 50% 36%, rgb(255 249 232 / 95%) 0%, transparent 66%),
+    radial-gradient(circle at 50% 50%, transparent 58%, rgb(96 60 24 / 40%) 100%),
+    var(--wwui-mottle),
+    var(--wwui-parch-light);
+  border-color: var(--wwui-bronze-light);
+  box-shadow:
+    0 0 0 1px var(--wwui-bronze-dark),
+    inset 0 0 0 1px rgb(240 220 170 / 75%),
+    0 0 10px var(--wwui-glow),
+    0 2px 5px rgb(0 0 0 / 60%);
+  color: var(--wwui-ink-head);
+  text-shadow: 0 1px 0 rgb(255 245 220 / 70%);
+}
+
+.wwui-controls :is(#sidebar-tabs, #scene-controls) .ui-control:is([aria-pressed="true"], .active),
+.wwui-chat :is(#chat-controls, .jump-to-bottom) .ui-control:is([aria-pressed="true"], .active) {
+  background:
+    radial-gradient(circle at 50% 40%, rgb(255 250 230) 0%, rgb(246 226 180 / 80%) 45%, transparent 75%),
+    radial-gradient(circle at 50% 50%, transparent 60%, rgb(150 96 36 / 45%) 100%),
+    var(--wwui-mottle),
+    var(--wwui-parch-light);
+  border-color: var(--wwui-bronze-bright);
+  box-shadow:
+    0 0 0 1px var(--wwui-bronze-dark),
+    inset 0 0 0 1px rgb(255 240 200 / 80%),
+    0 0 12px rgb(240 186 84 / 75%),
+    0 2px 5px rgb(0 0 0 / 60%);
+  color: var(--wwui-ink-head);
+}
+
+.wwui-controls :is(#sidebar-tabs, #scene-controls) .ui-control:focus-visible,
+.wwui-chat :is(#chat-controls, .jump-to-bottom) .ui-control:focus-visible {
+  outline: 2px solid var(--wwui-bronze-bright);
+  outline-offset: 2px;
+}
+
+/* Core clips the scene controls to their columns, which would cut the rims and glow off the outer medallions;
+   clip a little further out instead, so extra tool columns are still kept in. */
+.wwui-controls #scene-controls {
+  overflow: clip;
+  overflow-clip-margin: 12px;
+}
+
+/* A new message waiting on a hidden tab: a red wax seal on the medallion's shoulder. */
+.wwui-controls #sidebar-tabs .notification-pip {
+  color: #f3dcc0;
+  background: radial-gradient(circle at 40% 35%, #c2402a, #7a160b 75%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #2c0904, 0 1px 3px rgb(0 0 0 / 60%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wwui-controls :is(#sidebar-tabs, #scene-controls) .ui-control,
+  .wwui-chat :is(#chat-controls, .jump-to-bottom) .ui-control,
+  .wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button {
+    transition: none;
+  }
+}

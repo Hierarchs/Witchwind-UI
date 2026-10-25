@@ -1,6 +1,6 @@
 {
-  "id": "vellumgate",
-  "title": "Vellumgate",
+  "id": "witchwind-ui",
+  "title": "Witchwind UI",
   "description": "Chat, chat cards and the icons along the sides of the screen restyled after The Elder Scrolls IV: Oblivion: parchment pages in bronze frames, calligraphic headings and ink-drawn medallion buttons.",
   "version": "0.1.0",
   "authors": [
@@ -10,16 +10,16 @@
   "license": "LICENSE",
   "readme": "README.md",
   "manifest": "https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/module.json",
-  "download": "https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/dist/vellumgate.zip",
+  "download": "https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/dist/witchwind-ui.zip",
   "compatibility": {
     "minimum": "14",
     "verified": "14.353"
   },
   "esmodules": [
-    "scripts/vellumgate.mjs"
+    "scripts/witchwind-ui.mjs"
   ],
   "styles": [
-    "styles/vellumgate.css"
+    "styles/witchwind-ui.css"
   ],
   "languages": [
     {
