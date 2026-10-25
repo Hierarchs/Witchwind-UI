@@ -1,8 +1,8 @@
 {
   "id": "witchwind-ui",
   "title": "Witchwind UI",
-  "description": "Foundry's interface restyled after The Elder Scrolls IV: Oblivion: chat and chat cards, sidebar tabs, tooltips, menus, dialogs and the controls around the screen, as parchment pages in bronze frames with calligraphic headings and ink-drawn medallion buttons.",
-  "version": "0.2.0",
+  "description": "The rest of Foundry's interface in the style of Witchwind Inventory: dark leather and gold, Cinzel headings, square slots and parchment or steel chat cards, across the chat, sidebar tabs, tooltips, menus, dialogs and the controls around the screen.",
+  "version": "0.3.0",
   "authors": [
     { "name": "Hierarchs", "url": "https://github.com/Hierarchs" }
   ],
