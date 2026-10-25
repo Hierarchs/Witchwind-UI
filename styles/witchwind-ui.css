@@ -109,6 +109,12 @@
   --wwui-plaque-hover: linear-gradient(180deg, #f7edd2, #dfc89a);
   --wwui-plaque-pressed: linear-gradient(180deg, #bf9f6a, #d2b886);
 
+  /* A dark bronze bar, for window title bars and folder ribbons. */
+  --wwui-bar: linear-gradient(180deg, rgb(255 236 190 / 16%), rgb(0 0 0 / 0) 45%, rgb(0 0 0 / 28%)), var(--wwui-mottle);
+
+  /* Turns core's white SVG icons into brown ink, so they read on parchment. */
+  --wwui-ink-filter: invert(0.8) sepia(1) saturate(1.6);
+
   --wwui-font-display: "Almendra", "Modesto Condensed", Georgia, serif;
   --wwui-font-body: "IM Fell English", "Alegreya", Georgia, serif;
 }
@@ -849,10 +855,719 @@
   box-shadow: 0 0 0 1px #2c0904, 0 1px 3px rgb(0 0 0 / 60%);
 }
 
+/* ============================================ */
+/*  Parchment surfaces                          */
+/* ============================================ */
+
+/*
+ * The sidebar tabs and the dialog windows are parchment pages. Their text, links and rules take ink colors
+ * through core's own variables, set on the page so everything inside inherits them.
+ */
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar),
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) {
+  --color-text-emphatic: var(--wwui-ink-head);
+  --color-text-primary: var(--wwui-ink);
+  --color-text-secondary: var(--wwui-ink-soft);
+  --color-text-tertiary: var(--wwui-ink-faint);
+  --color-text-subtle: var(--wwui-ink-faint);
+  --color-text-accent: var(--wwui-ink-head);
+  --color-text-selection: var(--wwui-parch-light);
+  --color-text-selection-bg: var(--wwui-bronze);
+  --color-shadow-primary: var(--wwui-ink-glow);
+  --color-shadow-highlight: var(--wwui-ink-glow);
+  --color-border-highlight: var(--wwui-bronze-light);
+  --color-scrollbar: var(--wwui-bronze);
+  --hr-gradient: linear-gradient(90deg, transparent, var(--wwui-rule) 50%, transparent);
+  --content-link-background: rgb(255 248 228 / 45%);
+  --content-link-border-color: var(--wwui-rule);
+  --content-link-text-color: var(--wwui-ink-head);
+  --content-link-icon-color: var(--wwui-bronze);
+  --table-background-color: rgb(255 248 228 / 25%);
+  --table-header-bg-color: var(--wwui-wash);
+  --table-header-border-color: var(--wwui-rule);
+  --table-row-color-even: var(--wwui-wash);
+  --table-row-color-highlight: rgb(110 74 34 / 18%);
+  --font-sans: var(--wwui-font-body);
+  --font-body: var(--wwui-font-body);
+  --font-serif: var(--wwui-font-body);
+  --dnd5e-font-roboto: var(--wwui-font-body);
+  --dnd5e-font-roboto-condensed: var(--wwui-font-body);
+  --dnd5e-font-roboto-slab: var(--wwui-font-display);
+  --dnd5e-font-modesto: var(--wwui-font-display);
+  color: var(--wwui-ink);
+  font-family: var(--wwui-font-body);
+  scrollbar-color: var(--wwui-bronze) transparent;
+}
+
+/*
+ * Buttons become raised parchment plaques and fields engraved strips. These defaults sit in their own layer
+ * just above core's theme colors and below core's per-panel rules, so they replace the dark theme while the
+ * transparent icon buttons, the playing-track accent and the like keep working as core intends.
+ */
+@layer elements.wwui {
+  .wwui-sidebar .sidebar-tab:not(.chat-sidebar) :is(button, a.button, kbd),
+  .wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) .window-content :is(button, a.button, kbd) {
+    --button-background-color: var(--wwui-plaque);
+    --button-border-color: var(--wwui-bronze);
+    --button-text-color: var(--wwui-ink-head);
+    --button-focus-outline-color: var(--wwui-bronze-light);
+    --button-hover-background-color: var(--wwui-plaque-hover);
+    --button-hover-border-color: var(--wwui-bronze-light);
+    --button-hover-text-color: var(--wwui-ink-head);
+  }
+
+  .wwui-sidebar .sidebar-tab:not(.chat-sidebar) :is(button, a.button)[disabled],
+  .wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) .window-content :is(button, a.button)[disabled] {
+    --button-background-color: var(--wwui-wash);
+    --button-border-color: var(--wwui-rule);
+    --button-text-color: var(--wwui-ink-faint);
+    --button-hover-background-color: var(--button-background-color);
+    --button-hover-border-color: var(--button-border-color);
+    --button-hover-text-color: var(--button-text-color);
+  }
+
+  .wwui-sidebar .sidebar-tab:not(.chat-sidebar) :is(input, select, textarea, code-mirror, formula-input, color-picker, file-picker, document-tags, string-tags, label.icon),
+  .wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) :is(input, select, textarea, code-mirror, formula-input, color-picker, file-picker, document-tags, string-tags, label.icon) {
+    --input-background-color: rgb(255 248 228 / 40%);
+    --input-border-color: var(--wwui-rule);
+    --input-text-color: var(--wwui-ink);
+    --input-placeholder-color: var(--wwui-ink-faint);
+    --input-focus-outline-color: var(--wwui-bronze-light);
+    --input-box-shadow: inset 0 1px 3px rgb(60 38 15 / 30%);
+  }
+
+  .wwui-sidebar .sidebar-tab:not(.chat-sidebar) input:is([type="checkbox"], [type="radio"]),
+  .wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) input:is([type="checkbox"], [type="radio"]) {
+    --checkbox-background-color: rgb(255 248 228 / 55%);
+    --checkbox-checked-color: var(--wwui-ink-head);
+    --checkbox-disabled-color: var(--wwui-rule);
+    --checkbox-checkmark-color: var(--wwui-parch-light);
+  }
+}
+
+/* dnd5e sets its own button colors outside any layer, so inside its windows (and its parts of other pages)
+   the plaque colors have to be given again at full strength. */
+.wwui-popups .application.roll-configuration .window-content :is(button, a.button),
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .dnd5e2 :is(button, a.button) {
+  --button-background-color: var(--wwui-plaque);
+  --button-border-color: var(--wwui-bronze);
+  --button-text-color: var(--wwui-ink-head);
+  --button-hover-background-color: var(--wwui-plaque-hover);
+  --button-hover-border-color: var(--wwui-bronze-light);
+  --button-hover-text-color: var(--wwui-ink-head);
+}
+
+.wwui-popups .application.roll-configuration .form-footer button {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+}
+
+/* -------------------------------------------- */
+/*  Sidebar tabs                                */
+/* -------------------------------------------- */
+
+/* Each tab, docked or popped out, is one parchment page in a bronze frame. */
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) {
+  --sidebar-background: var(--wwui-corners), var(--wwui-parchment);
+  --sidebar-separator: 1px solid var(--wwui-rule-soft);
+  --sidebar-entry-hover-bg: var(--wwui-wash);
+  --sidebar-folder-color: var(--wwui-bronze);
+  --entry-hover-bg: var(--wwui-wash);
+  --entry-active-bg: rgb(110 74 34 / 18%);
+  --active-input-bg-color: rgb(255 248 228 / 60%);
+  --token-effect-filter: var(--wwui-ink-filter);
+  border: 2px solid var(--wwui-bronze);
+  box-shadow:
+    inset 0 0 0 1px rgb(222 196 140 / 70%),
+    inset 0 0 0 2px rgb(60 38 16 / 45%),
+    inset 0 0 30px rgb(110 70 28 / 36%);
+}
+
+/* Entries: names in Almendra, pictures in small bronze frames, the chosen or right-clicked one ringed in bronze. */
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .directory-item :is(.entry-name, .document-name) {
+  font-family: var(--wwui-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .directory-item.entry > img,
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .directory-item .thumbnail img {
+  border: 1px solid var(--wwui-bronze-light);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark);
+  background: var(--wwui-parch-deep);
+}
+
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .directory-item:is(.context, .active)::after {
+  border-color: var(--wwui-bronze-light);
+  box-shadow: inset 0 0 8px var(--wwui-glow);
+}
+
+/* Folders: a bronze ribbon with its name in Almendra. A folder's own color, if it has one, still shows through. */
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) li.folder > .folder-header,
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .global-control > header {
+  background-image: var(--wwui-bar);
+  border-bottom: 1px solid var(--wwui-bronze-dark);
+  box-shadow: inset 0 1px 0 rgb(255 236 190 / 22%);
+  color: var(--wwui-parch-light);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 70%);
+}
+
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) li.folder > .folder-header .folder-name,
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .global-control > header :is(strong, label) {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+}
+
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .global-control > header {
+  background-color: var(--wwui-bronze);
+}
+
+/* Compendium banners and scene thumbnails keep their pictures; they get a bronze edge between them. */
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) :is(.compendium, .scene).directory-item {
+  border-top-color: var(--wwui-bronze-dark);
+}
+
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .compendium .compendium-name strong,
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .scene .entry-name {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-parch-light);
+}
+
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) .directory-footer:not(:empty) {
+  background: var(--wwui-wash);
+  border-top: 1px solid var(--wwui-rule-soft);
+}
+
+/* Combat tracker: the encounter title and each combatant's name in Almendra, initiative large in red-brown ink. */
+.wwui-sidebar .combat-sidebar :is(.encounter-name, .encounter-title) {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-sidebar .combat-sidebar .combatant :is(.token-name, .name) {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+}
+
+.wwui-sidebar .combat-sidebar .combatant.active::before {
+  border-color: var(--wwui-bronze-light);
+  box-shadow: inset 0 0 10px var(--wwui-glow);
+}
+
+.wwui-sidebar .combat-sidebar .combatant .token-initiative {
+  font-family: var(--wwui-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+/* Core draws the roll-initiative die in white; ink it, as core does for its light theme. */
+.wwui-sidebar .combat-sidebar .combatant .token-initiative button:not(:hover) {
+  filter: var(--wwui-ink-filter);
+}
+
+.wwui-sidebar .combat-sidebar :is(.combat-tracker-header, .combat-controls) {
+  border-color: var(--wwui-rule);
+}
+
+/* Settings and other tabs with headings. Almendra runs wider than core's face, so the larger ones come down a step. */
+.wwui-sidebar .sidebar-tab:not(.chat-sidebar) :is(section > h4, .group-header .label, .info .title) {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-sidebar .settings-sidebar section > h4 {
+  font-size: 17px;
+}
+
+.wwui-sidebar .settings-sidebar .info .title {
+  font-size: 26px;
+}
+
+/* Placeables: core rings hovered and chosen entries in white and orange; bronze instead. */
+.wwui-sidebar .placeables-sidebar .placeable-entry:is(:hover, .hovered) {
+  outline-color: var(--wwui-bronze-light);
+}
+
+.wwui-sidebar .placeables-sidebar .placeable-entry.active {
+  outline-color: var(--wwui-bronze-bright);
+}
+
+/* -------------------------------------------- */
+/*  Windows                                     */
+/* -------------------------------------------- */
+
+/*
+ * Dialogs, dnd5e's roll dialogs, Configure Settings and popped-out sidebar tabs: a parchment window in a
+ * bronze frame. Core builds the window from these variables, so setting them on the window does most of it.
+ */
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config),
+.wwui-sidebar .application.sidebar-popout:not(.chat-sidebar),
+.wwui-chat #chat-popout {
+  --background: var(--wwui-corners), var(--wwui-parchment);
+  --dnd5e-application-background: var(--wwui-corners), var(--wwui-parchment);
+  --color-header-background: var(--wwui-bar), var(--wwui-bronze);
+  --color-border: var(--wwui-bronze);
+  --color-tabs-border: var(--wwui-rule);
+  --color-fieldset-border: var(--wwui-rule);
+  --color-form-hint: var(--wwui-ink-faint);
+  --color-form-hint-hover: var(--wwui-ink-soft);
+  --color-form-label: var(--wwui-ink-soft);
+  --color-form-label-hover: var(--wwui-ink);
+  --color-data-border: var(--wwui-rule);
+  --color-data-background: var(--wwui-wash);
+  border: 2px solid var(--wwui-bronze);
+  border-radius: 4px;
+  box-shadow:
+    0 0 0 1px var(--wwui-bronze-dark),
+    inset 0 0 0 1px rgb(222 196 140 / 70%),
+    inset 0 0 30px rgb(110 70 28 / 36%),
+    0 6px 20px rgb(0 0 0 / 65%);
+}
+
+/* The popped-out chat keeps a dark ground, so its parchment messages still stand apart. */
+.wwui-chat #chat-popout {
+  --background: var(--wwui-mottle), #1d1710;
+  --sidebar-background: var(--wwui-mottle), #1d1710;
+}
+
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) .window-content,
+.wwui-sidebar .application.sidebar-popout:not(.chat-sidebar) .window-content {
+  backdrop-filter: none;
+}
+
+/* The title bar: dark bronze with the title in Almendra. dnd5e's own windows put their title on the page
+   instead, so they keep a bare header and ink controls. */
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config):not(.dnd5e2) .window-header,
+.wwui-sidebar .application.sidebar-popout:not(.chat-sidebar) .window-header,
+.wwui-chat #chat-popout .window-header {
+  border-bottom: 1px solid var(--wwui-bronze-dark);
+  box-shadow: inset 0 1px 0 rgb(255 236 190 / 22%), 0 1px 0 rgb(222 196 140 / 45%);
+}
+
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config):not(.dnd5e2) .window-header .window-title,
+.wwui-sidebar .application.sidebar-popout:not(.chat-sidebar) .window-header .window-title,
+.wwui-chat #chat-popout .window-header .window-title {
+  font-family: var(--wwui-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--wwui-parch-light);
+  text-shadow: 0 1px 2px rgb(0 0 0 / 70%);
+}
+
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config):not(.dnd5e2) .window-header button.header-control,
+.wwui-sidebar .application.sidebar-popout:not(.chat-sidebar) .window-header button.header-control,
+.wwui-chat #chat-popout .window-header button.header-control {
+  --button-text-color: var(--wwui-parch-light);
+  --button-hover-text-color: var(--wwui-bronze-bright);
+}
+
+.wwui-popups .application.roll-configuration.dnd5e2 .window-header button.header-control {
+  --button-text-color: var(--wwui-ink-head);
+  --button-hover-text-color: var(--wwui-ink-head);
+}
+
+.wwui-popups .application.roll-configuration.dnd5e2 .window-header :is(h1, h2) {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+}
+
+/* The resize handle is drawn dark for light windows; core inverts it in its dark theme. */
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) .window-resize-handle,
+.wwui-sidebar .application.sidebar-popout:not(.chat-sidebar) .window-resize-handle {
+  filter: none;
+}
+
+/* Inside: Almendra legends over fine rules, ink labels and hints. */
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) fieldset > legend {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-ink-head);
+}
+
+.wwui-popups :is(.application.dialog, .application.roll-configuration, #settings-config) :is(h1, h2, h3, h4):not(.window-title) {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+  border-bottom-color: var(--wwui-rule);
+}
+
+.wwui-popups .application.roll-configuration .rolls .formulas .formula {
+  color: var(--wwui-ink-head);
+}
+
+.wwui-popups .application.roll-configuration .rolls .dice .label {
+  color: var(--wwui-parch-light);
+  background: var(--wwui-bronze-dark);
+}
+
+/* Configure Settings: the category list down the side, the open one lit. */
+.wwui-popups #settings-config aside {
+  border-right-color: var(--wwui-rule);
+}
+
+.wwui-popups #settings-config aside nav.tabs > button {
+  --button-background-color: transparent;
+  --button-border-color: transparent;
+  --button-hover-background-color: var(--wwui-wash);
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+}
+
+.wwui-popups #settings-config aside nav.tabs > button:is(.active, [aria-pressed="true"]) {
+  --button-background-color: rgb(110 74 34 / 16%);
+  --button-border-color: var(--wwui-rule);
+}
+
+/* -------------------------------------------- */
+/*  Tooltips                                    */
+/* -------------------------------------------- */
+
+/* A small slip of parchment. dnd5e's item and effect cards are left to dnd5e (or Witchwind Inventory). */
+.wwui-popups :is(#tooltip, .locked-tooltip):not(.dnd5e-tooltip) {
+  --color-text-primary: var(--wwui-ink);
+  --color-text-secondary: var(--wwui-ink-soft);
+  --color-text-subtle: var(--wwui-ink-faint);
+  --color-text-emphatic: var(--wwui-ink-head);
+  background: var(--wwui-parchment);
+  border: 1px solid var(--wwui-bronze);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 12px rgb(110 70 28 / 30%), 0 3px 8px rgb(0 0 0 / 55%);
+  color: var(--wwui-ink);
+  font-family: var(--wwui-font-body);
+  font-size: 15px;
+  line-height: 1.25;
+  backdrop-filter: none;
+}
+
+.wwui-popups .locked-tooltip:not(.dnd5e-tooltip) {
+  border-color: var(--wwui-bronze-light);
+}
+
+.wwui-popups :is(#tooltip, .locked-tooltip):not(.dnd5e-tooltip) .toolclip h4 {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-ink-head);
+}
+
+.wwui-popups :is(#tooltip, .locked-tooltip):not(.dnd5e-tooltip) .toolclip p.faint {
+  color: var(--wwui-ink-faint);
+}
+
+/* -------------------------------------------- */
+/*  Right-click menus                           */
+/* -------------------------------------------- */
+
+/* A parchment list in a bronze frame; the entry under the cursor gets a darker band, as Oblivion's lists do. */
+.wwui-popups #context-menu {
+  --background-color: var(--wwui-parchment);
+  --border-color: var(--wwui-bronze);
+  --text-color: var(--wwui-ink);
+  --hover-text-color: var(--wwui-ink-head);
+  --group-separator: var(--wwui-rule);
+  --hover-entry-border: var(--wwui-rule);
+  --hover-entry-background: rgb(110 74 34 / 16%);
+  border-width: 2px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(222 196 140 / 70%), inset 0 0 18px rgb(110 70 28 / 30%), 0 4px 12px rgb(0 0 0 / 60%);
+  font-family: var(--wwui-font-body);
+}
+
+.wwui-popups #context-menu li.context-item {
+  font-size: 14px;
+}
+
+.wwui-popups #context-menu li.context-item > i {
+  color: var(--wwui-bronze);
+}
+
+.wwui-popups #context-menu li.context-item:hover > i {
+  color: var(--wwui-ink-head);
+}
+
+/* -------------------------------------------- */
+/*  Notifications                               */
+/* -------------------------------------------- */
+
+/* A parchment slip with a colored edge and icon for its kind: blue for news, amber for warnings, red for errors, green for success. */
+.wwui-popups #notifications > .notification {
+  --wwui-level: var(--wwui-bronze);
+  border: 1px solid var(--wwui-bronze);
+  border-left: 4px solid var(--wwui-level);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 14px rgb(110 70 28 / 30%), 0 3px 10px rgb(0 0 0 / 55%);
+  color: var(--wwui-ink);
+  font-family: var(--wwui-font-body);
+  font-size: 15px;
+  text-shadow: none;
+}
+
+.wwui-popups #notifications > .notification:not(.progress) {
+  background: var(--wwui-parchment);
+}
+
+/* Progress keeps core's filling bar, in bronze over parchment. */
+.wwui-popups #notifications > .notification.progress {
+  background:
+    linear-gradient(90deg, rgb(110 74 34 / 22%) var(--pct), var(--wwui-bronze) var(--pct), var(--wwui-bronze) calc(var(--pct) + 2px), transparent calc(var(--pct) + 2px)),
+    var(--wwui-parchment);
+}
+
+.wwui-popups #notifications > .notification.info { --wwui-level: #2f5d8a; }
+.wwui-popups #notifications > .notification.warning { --wwui-level: var(--wwui-emote); }
+.wwui-popups #notifications > .notification.error { --wwui-level: var(--wwui-bad); }
+.wwui-popups #notifications > .notification.success { --wwui-level: var(--wwui-good); }
+
+.wwui-popups #notifications > .notification::before {
+  color: var(--wwui-level);
+}
+
+.wwui-popups #notifications > .notification::after {
+  color: var(--wwui-ink-faint);
+}
+
+/* ============================================ */
+/*  Screen controls                             */
+/* ============================================ */
+
+/* -------------------------------------------- */
+/*  Players                                     */
+/* -------------------------------------------- */
+
+/* The player list as a small parchment page; your own name in red-brown ink, idle players faded. */
+.wwui-controls #players {
+  --background-color: var(--wwui-corners), var(--wwui-parchment);
+  --border-color: var(--wwui-bronze);
+  --text-color: var(--wwui-ink-soft);
+  --player-name-color: var(--wwui-ink);
+  --player-name-idle-color: var(--wwui-ink-faint);
+  --player-name-self-color: var(--wwui-ink-head);
+  --color-rating-good: var(--wwui-good);
+  --color-rating-fair: var(--wwui-emote);
+  --color-rating-poor: var(--wwui-bad);
+  font-family: var(--wwui-font-body);
+  font-size: 14px;
+}
+
+.wwui-controls #players :is(#players-active, #players-inactive) {
+  border-width: 2px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(222 196 140 / 70%), inset 0 0 16px rgb(110 70 28 / 32%), 0 3px 8px rgb(0 0 0 / 50%);
+}
+
+.wwui-controls #players .player .player-name {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+}
+
+.wwui-controls #players .player::before {
+  border-color: var(--wwui-bronze-dark);
+}
+
+.wwui-controls #players button {
+  --button-text-color: var(--wwui-ink-soft);
+  --button-hover-text-color: var(--wwui-ink-head);
+}
+
+/* -------------------------------------------- */
+/*  Macro bar                                   */
+/* -------------------------------------------- */
+
+/* Each slot a parchment tile in a bronze rim, its key number on a small bronze tab. */
+.wwui-controls #hotbar {
+  --slot-color: var(--wwui-mottle), var(--wwui-parch-deep);
+  --key-bg-color-empty: var(--wwui-bronze);
+  --key-bg-color-full: var(--wwui-bronze-dark);
+  --key-text-color: var(--wwui-parch-light);
+  --page-control-color: var(--wwui-bronze-light);
+}
+
+.wwui-controls #hotbar #action-bar .slot {
+  border: 2px solid var(--wwui-bronze);
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(222 196 140 / 55%), inset 0 0 14px rgb(90 55 20 / 45%), 0 2px 5px rgb(0 0 0 / 55%);
+}
+
+.wwui-controls #hotbar #action-bar .slot.full {
+  --slot-color: var(--wwui-parch);
+}
+
+.wwui-controls #hotbar #action-bar .slot :is(.slot-icon, .key) {
+  border-radius: 4px;
+}
+
+.wwui-controls #hotbar #action-bar .slot .key {
+  border-radius: 4px 0 4px 0;
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  box-shadow: 1px 1px 0 rgb(222 196 140 / 40%);
+}
+
+.wwui-controls #hotbar #action-bar .slot:hover {
+  border-color: var(--wwui-bronze-bright);
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), 0 0 10px var(--wwui-glow), 0 2px 5px rgb(0 0 0 / 55%);
+}
+
+.wwui-controls #hotbar #action-bar .slot.drop-target {
+  background: var(--wwui-parch-light);
+  border-color: var(--wwui-bronze-bright);
+}
+
+.wwui-controls #hotbar button {
+  --button-text-color: var(--wwui-parch-light);
+  --button-hover-text-color: var(--wwui-bronze-bright);
+  text-shadow: 0 1px 3px rgb(0 0 0 / 80%);
+}
+
+.wwui-controls #hotbar #hotbar-page-controls .hotbar-page-number {
+  font-family: var(--wwui-font-display);
+  font-weight: 700;
+  color: var(--wwui-bronze-dark);
+  text-shadow: none;
+}
+
+/* -------------------------------------------- */
+/*  Scene navigation                            */
+/* -------------------------------------------- */
+
+/* Scene names on parchment plaques; the active scene ringed in bright bronze, the one you're viewing lit. */
+.wwui-controls #scene-navigation .scene-navigation-menu .scene {
+  background: var(--wwui-plaque);
+  border: 1px solid var(--wwui-bronze);
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 1px 0 rgb(255 250 235 / 60%), 0 2px 5px rgb(0 0 0 / 50%);
+  color: var(--wwui-ink);
+  font-family: var(--wwui-font-display);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.wwui-controls #scene-navigation .scene-navigation-menu .scene:hover {
+  border-color: var(--wwui-bronze-light);
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), 0 0 8px var(--wwui-glow), 0 2px 5px rgb(0 0 0 / 50%);
+}
+
+.wwui-controls #scene-navigation .scene-navigation-menu .scene:is(.active, [aria-pressed="true"]) {
+  border-color: var(--wwui-bronze-bright);
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), 0 0 10px rgb(240 186 84 / 70%), 0 2px 5px rgb(0 0 0 / 50%);
+}
+
+.wwui-controls #scene-navigation .scene-navigation-menu .scene.view {
+  background: var(--wwui-plaque-hover);
+  color: var(--wwui-ink-head);
+}
+
+.wwui-controls #scene-navigation .scene-navigation-menu .scene:hover .scene-name {
+  text-shadow: 0 0 6px var(--wwui-ink-glow);
+}
+
+.wwui-controls #scene-navigation .scene-navigation-menu .icons {
+  color: var(--wwui-ink-soft);
+  opacity: 0.8;
+}
+
+.wwui-controls #scene-navigation .scene-navigation-menu .scene-players .scene-player {
+  border-color: var(--wwui-bronze-dark);
+}
+
+.wwui-controls #scene-navigation #scene-navigation-expand {
+  color: var(--wwui-parch-light);
+  text-shadow: 0 1px 3px rgb(0 0 0 / 80%);
+}
+
+/* -------------------------------------------- */
+/*  Token HUD                                   */
+/* -------------------------------------------- */
+
+/* The buttons around a token: parchment tiles with ink icons, in bronze rims. */
+.wwui-controls .placeable-hud {
+  --control-bg-color: var(--wwui-parch);
+  --control-border-color: var(--wwui-bronze);
+  --control-icon-color: var(--wwui-ink);
+  --control-hover-bg-color: var(--wwui-parch-light);
+  --control-hover-border-color: var(--wwui-bronze-light);
+  --control-hover-icon-color: var(--wwui-ink-head);
+  --control-active-bg-color: var(--wwui-parch-light);
+  --control-active-border-color: var(--wwui-bronze-bright);
+  --control-active-icon-color: var(--wwui-ink-head);
+  --control-icon-filter: var(--wwui-ink-filter);
+  --hud-icon-filter: var(--wwui-ink-filter);
+}
+
+.wwui-controls .placeable-hud .control-icon {
+  background:
+    radial-gradient(circle at 50% 36%, rgb(255 246 222 / 75%) 0%, transparent 65%),
+    var(--wwui-mottle),
+    var(--control-bg-color);
+  border-width: 2px;
+  border-radius: 6px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(232 208 150 / 60%), inset 0 -2px 4px rgb(90 55 20 / 30%), 0 2px 6px rgb(0 0 0 / 60%);
+  text-shadow: 0 1px 0 rgb(255 245 220 / 55%);
+}
+
+.wwui-controls .placeable-hud .control-icon:hover {
+  background-color: var(--control-hover-bg-color);
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(240 220 170 / 75%), 0 0 10px var(--wwui-glow), 0 2px 6px rgb(0 0 0 / 60%);
+}
+
+.wwui-controls .placeable-hud .control-icon.active {
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(255 240 200 / 80%), 0 0 12px rgb(240 186 84 / 75%), 0 2px 6px rgb(0 0 0 / 60%);
+}
+
+/* The status-effect and other palettes: a parchment panel in the same frame. */
+.wwui-controls .placeable-hud .palette {
+  background: var(--wwui-corners), var(--wwui-parchment);
+  border: 2px solid var(--wwui-bronze);
+  border-radius: 4px;
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 0 1px rgb(222 196 140 / 70%), inset 0 0 16px rgb(110 70 28 / 32%), 0 4px 12px rgb(0 0 0 / 60%);
+}
+
+.wwui-controls .placeable-hud .palette.palette-list {
+  font-family: var(--wwui-font-body);
+  font-size: 14px;
+}
+
+/* Hit points and the second bar: raised plaques with Almendra figures, edged in green and blue ink. */
+.wwui-controls .placeable-hud input[type="text"] {
+  border-width: 2px;
+  border-radius: 4px;
+  font-family: var(--wwui-font-display);
+  box-shadow: 0 0 0 1px var(--wwui-bronze-dark), inset 0 0 10px rgb(110 70 28 / 30%), 0 2px 6px rgb(0 0 0 / 60%);
+}
+
+.wwui-controls #token-hud .attribute.bar1 input { border-color: var(--wwui-good); }
+.wwui-controls #token-hud .attribute.bar2 input { border-color: #2f5d8a; }
+
+.wwui-controls #token-hud .status-effects .effect-control.overlay {
+  border-color: var(--wwui-bronze-bright);
+}
+
+/* -------------------------------------------- */
+/*  Pause                                       */
+/* -------------------------------------------- */
+
+.wwui-controls #pause {
+  background: linear-gradient(to right, transparent 0%, rgb(26 18 10 / 70%) 35%, rgb(26 18 10 / 70%) 65%, transparent 100%);
+}
+
+.wwui-controls #pause figcaption {
+  font-family: var(--wwui-font-display);
+  color: var(--wwui-bronze-bright);
+  letter-spacing: 0.2em;
+  text-shadow: 0 2px 6px rgb(0 0 0 / 90%);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wwui-controls :is(#sidebar-tabs, #scene-controls) .ui-control,
   .wwui-chat :is(#chat-controls, .jump-to-bottom) .ui-control,
   .wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message button {
     transition: none;
+  }
+
+  .wwui-controls #pause.paused {
+    animation: none;
   }
 }

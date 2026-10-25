@@ -1,5 +1,13 @@
 const MODULE_ID = "witchwind-ui";
 
+/** Each setting turns on one part of the restyle, through a body class the stylesheet is scoped under. */
+const AREAS = {
+  chat: "wwui-chat",
+  sidebar: "wwui-sidebar",
+  controls: "wwui-controls",
+  popups: "wwui-popups"
+};
+
 /* -------------------------------------------- */
 /*  Settings                                    */
 /* -------------------------------------------- */
@@ -19,9 +27,19 @@ Hooks.once("init", () => {
     hint: "WITCHWIND_UI.Settings.Chat.Hint"
   });
 
+  register("sidebar", {
+    name: "WITCHWIND_UI.Settings.Sidebar.Name",
+    hint: "WITCHWIND_UI.Settings.Sidebar.Hint"
+  });
+
   register("controls", {
     name: "WITCHWIND_UI.Settings.Controls.Name",
     hint: "WITCHWIND_UI.Settings.Controls.Hint"
+  });
+
+  register("popups", {
+    name: "WITCHWIND_UI.Settings.Popups.Name",
+    hint: "WITCHWIND_UI.Settings.Popups.Hint"
   });
 
   // Applied during init, before the interface first renders, so it never flashes the default style.
@@ -34,6 +52,7 @@ Hooks.once("init", () => {
 
 /** Everything in the stylesheet is scoped under these body classes, so switching a setting off restores the default at once. */
 function applyStyles() {
-  document.body.classList.toggle("wwui-chat", game.settings.get(MODULE_ID, "chat"));
-  document.body.classList.toggle("wwui-controls", game.settings.get(MODULE_ID, "controls"));
+  for ( const [key, cls] of Object.entries(AREAS) ) {
+    document.body.classList.toggle(cls, game.settings.get(MODULE_ID, key));
+  }
 }

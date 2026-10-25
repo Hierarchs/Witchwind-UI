@@ -5,9 +5,17 @@
         "Name": "Restyle chat",
         "Hint": "Show the chat log, chat cards, dice rolls and the message box as Oblivion-style parchment. This only changes your own view."
       },
+      "Sidebar": {
+        "Name": "Restyle sidebar tabs",
+        "Hint": "Show Combat, Actors, Items, Journal and the other sidebar tabs as parchment pages, docked or popped out. This only changes your own view."
+      },
       "Controls": {
-        "Name": "Restyle side icons",
-        "Hint": "Show the sidebar tabs and the scene controls as parchment medallions in bronze rims. This only changes your own view."
+        "Name": "Restyle screen controls",
+        "Hint": "Show the sidebar tab icons, scene controls, player list, macro bar, scene navigation and token HUD in parchment and bronze. This only changes your own view."
+      },
+      "Popups": {
+        "Name": "Restyle tooltips, menus and dialogs",
+        "Hint": "Show tooltips, right-click menus, notifications, dialogs, dnd5e's roll dialogs and Configure Settings as parchment. This only changes your own view."
       }
     }
   }
