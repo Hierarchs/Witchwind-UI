@@ -1,0 +1,31 @@
+{
+  "id": "vellumgate",
+  "title": "Vellumgate",
+  "description": "Chat, chat cards and the icons along the sides of the screen restyled after The Elder Scrolls IV: Oblivion: parchment pages in bronze frames, calligraphic headings and ink-drawn medallion buttons.",
+  "version": "0.1.0",
+  "authors": [
+    { "name": "Hierarchs", "url": "https://github.com/Hierarchs" }
+  ],
+  "url": "https://github.com/Hierarchs/Vellumgate",
+  "license": "LICENSE",
+  "readme": "README.md",
+  "manifest": "https://raw.githubusercontent.com/Hierarchs/Vellumgate/main/module.json",
+  "download": "https://raw.githubusercontent.com/Hierarchs/Vellumgate/main/dist/vellumgate.zip",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14.353"
+  },
+  "esmodules": [
+    "scripts/vellumgate.mjs"
+  ],
+  "styles": [
+    "styles/vellumgate.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ]
+}

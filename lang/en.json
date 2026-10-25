@@ -1,0 +1,14 @@
+{
+  "VELLUMGATE": {
+    "Settings": {
+      "Chat": {
+        "Name": "Restyle chat",
+        "Hint": "Show the chat log, chat cards, dice rolls and the message box as Oblivion-style parchment. This only changes your own view."
+      },
+      "Controls": {
+        "Name": "Restyle side icons",
+        "Hint": "Show the sidebar tabs and the scene controls as parchment medallions in bronze rims. This only changes your own view."
+      }
+    }
+  }
+}
