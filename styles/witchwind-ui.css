@@ -124,6 +124,7 @@
   --wwui-c-muted: var(--wwui-parch-muted);
   --wwui-c-head: var(--wwui-parch-head);
   --wwui-c-accent: var(--wwui-gold-dim);
+  --wwui-c-icon: var(--wwui-parch-ink);
   --wwui-c-rule: var(--wwui-gold-dim);
   --wwui-c-soft: rgb(90 62 30 / 30%);
   --wwui-c-card: #e2d3b2;
@@ -143,6 +144,7 @@
   --wwui-c-muted: var(--wwui-ink-muted);
   --wwui-c-head: var(--wwui-gold);
   --wwui-c-accent: var(--wwui-gold);
+  --wwui-c-icon: var(--wwui-gold);
   --wwui-c-rule: var(--wwui-line-strong);
   --wwui-c-soft: rgb(201 164 92 / 18%);
   --wwui-c-card: #221c15;
@@ -201,7 +203,7 @@
   --color-level-success-border: var(--wwui-c-good);
   --color-level-error: var(--wwui-c-bad);
   --color-level-error-border: var(--wwui-c-bad);
-  --activity-icon-color: var(--wwui-c-accent);
+  --activity-icon-color: var(--wwui-c-icon);
 
   /* Pills and links */
   --pill-border: 1px solid var(--wwui-c-rule);
@@ -471,6 +473,12 @@
 .wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .activity-icon:has(> dnd5e-icon) {
   border: none;
   padding: 0;
+}
+
+/* The activity's glyph beside the picture (crossed swords for an attack): dark ink on parchment, gold on steel.
+   Set on the icon itself too, so another module's colors can't fade it. */
+.wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header :is(.activity-icon, .item-icon) dnd5e-icon {
+  --icon-fill: var(--wwui-c-icon);
 }
 
 .wwui-chat :is(#chat, #chat-popout, #chat-notifications, .chat-popout) .chat-message.message .card-header .item-icon:hover {
