@@ -22,7 +22,7 @@ Everything else is Foundry's and dnd5e's own behavior. Animations are short and 
 Install it from this manifest URL (Foundry's **Install Module** dialog, or your host's module manager):
 
 ```
-https://raw.githubusercontent.com/Hierarchs/Vellumgate/main/module.json
+https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/module.json
 ```
 
 Then enable **Vellumgate** in your world's module settings.

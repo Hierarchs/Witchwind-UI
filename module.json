@@ -6,11 +6,11 @@
   "authors": [
     { "name": "Hierarchs", "url": "https://github.com/Hierarchs" }
   ],
-  "url": "https://github.com/Hierarchs/Vellumgate",
+  "url": "https://github.com/Hierarchs/Witchwind-UI",
   "license": "LICENSE",
   "readme": "README.md",
-  "manifest": "https://raw.githubusercontent.com/Hierarchs/Vellumgate/main/module.json",
-  "download": "https://raw.githubusercontent.com/Hierarchs/Vellumgate/main/dist/vellumgate.zip",
+  "manifest": "https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/module.json",
+  "download": "https://raw.githubusercontent.com/Hierarchs/Witchwind-UI/main/dist/vellumgate.zip",
   "compatibility": {
     "minimum": "14",
     "verified": "14.353"
